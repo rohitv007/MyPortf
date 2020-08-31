@@ -249,8 +249,7 @@ body {
     display: block;
     transition: top 0.3s;
     margin-top: 0px;
-    /* background: black;
-    opacity: 1; */
+    background: black;
   }
   @media (min-width: 1200px){
     .navbar a {
