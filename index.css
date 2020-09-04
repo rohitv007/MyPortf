@@ -83,7 +83,7 @@ html {
 
 body {
     color: white;
-    background: #1f1f1f;
+    background: black;
     overflow-x: hidden;
   }
 
@@ -95,7 +95,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #242f3f;
+    background-color: #1f1f1f;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -511,6 +511,7 @@ body {
 
   /* Scroll on click code below */
 .scrolldown {
+  margin: auto;
   position: absolute;
   bottom: -55px;
   left: 50%;
@@ -520,6 +521,7 @@ body {
 }
 
 .scrolldown span{
+  margin: auto;
   cursor: pointer;
   position: absolute;
   top: 0;
@@ -536,10 +538,12 @@ body {
 }
 .scrolldown span:nth-child(1)
 {
+  margin: auto;
   transform: translate(-15px, -15px);  
 }
 .scrolldown span:nth-child(2)
 {
+  margin: auto;
   transform: translate(0px, 0px);
 }
 
