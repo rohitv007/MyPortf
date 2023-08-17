@@ -973,6 +973,30 @@ li.py:after {
       width: 75%;
   }
 }
+li.react:after {
+  animation-name: react;
+}
+@keyframes react {
+  to {
+      width: 80%;
+  }
+}
+li.node:after {
+  animation-name: node;
+}
+@keyframes node {
+  to {
+      width: 60%;
+  }
+}
+li.sql:after {
+  animation-name: sql;
+}
+@keyframes sql {
+  to {
+      width: 70%;
+  }
+}
 
 @media (max-width: 576px){
  
