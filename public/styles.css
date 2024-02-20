@@ -19,63 +19,6 @@
   background: #18d26e;
 }
 
-/* sidenav code*/
-/* .sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background: transparent;
-  overflow-x: hidden;
-  transition: ease-in-out 0.4s;
-  padding-top: 60px;
-}
-
-.sidenav a {
-  padding: 15px;
-  text-decoration: none;
-  font-size: 25px;
-  color: white; 
-  display: block;
-  transition: 0.5s;
-}
-
-.sidenav a:not(:first-child){
-  text-align: center;
-  padding-bottom: 10%;
-}
-
-.sidenav a:nth-child(n+6):hover{
-  color: #18d26e;
-}
-
-.sidenav a:hover {
-  color: #cc005f;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: -4%;
-  left: 80%;
-  font-size: 3rem;
-}
-#press span:hover{
-  color: #cc005f;
-}
-
-#main {
-  transition: margin-left .5s;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-} */
-
-/*end sidenav code*/
-
 html {
   scroll-behavior: smooth;
 }
@@ -425,12 +368,6 @@ ul li a:hover:before {
   transform: scaleX(1);
 }
 
-/* Darker background on mouse-over */
-/* .bttn:hover {
-  background-color: transparent;
-  font-size: 1.4em;
-} */
-
 /*intro social*/
 .intro-social {
   display: block;
@@ -593,34 +530,7 @@ h3.heading {
 .img-class {
   padding: 7.5vw;
 }
-/* #sp {
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: "Roboto", sans-serif;
-    letter-spacing: 5px;
-  }
-*/
-/* .intro-button:after {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    height: 100%;
-    width: 100%;
-    background: url(img/dj.jpeg);
-    content: "";
-    z-index: -1;
-    transition: transform 0.2s ease-in, width 0.2s ease-out 0.2s;
-  } */
 
-/* .intro-button:hover::after{
-  transform: translate(-10px, -10px);
-  width: calc(100% - 5px);
-} */
-
-/* .intro-button:active .intro-button:after {
-    width: 100%;
-} */
 #img-about {
   width: 100%;
   height: 100%;
@@ -740,11 +650,7 @@ h3.heading {
   /* margin-left: 20vw; */
   margin-bottom: 5vh;
 }
-/* .section-intro h5{
-  text-decoration: underline;
-  font-size: 3rem;
-  font-family: robotic;
-} */
+
 #resume .timeline-content p {
   font-family: "poppins-regular", sans-serif;
   font-size: 1.6rem;
@@ -847,20 +753,6 @@ h3.heading {
     padding-left: -5rem;
   }
 }
-/*
-@media(min-width: 1030px){
-  #resume {
-padding:10rem;
-position: absolute;
-padding-right: 0;
-}
-#resume .timeline-content p{
-  font-size: 1.5rem;
-}
-#resume .resume-timeline {
-  max-width:80vw;
-}
-}*/
 
 /* Skills Section */
 #skills {
