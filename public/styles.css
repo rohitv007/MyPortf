@@ -280,7 +280,7 @@ ul li a:hover:before {
   height: 100vh;
   padding: 20vh 0 220px;
   /* background: grey; */
-  background-image: url("./public/assets/bg_unsplash_1.jpg");
+  background-image: url("/public/assets/bg_unsplash_1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
