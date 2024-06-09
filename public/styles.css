@@ -795,77 +795,85 @@ h3.heading {
   animation-timing-function: ease;
   animation-fill-mode: forwards;
 }
-li.html:after {
-  animation-name: html;
+
+li.html_css:after {
+  animation-name: html_css;
 }
-@keyframes html {
+@keyframes html_css {
   to {
     width: 90%;
   }
 }
-li.css:after {
-  animation-name: css;
-}
-@keyframes css {
-  to {
-    width: 80%;
-  }
-}
+
 li.js:after {
   animation-name: js;
 }
 @keyframes js {
   to {
-    width: 75%;
+    width: 90%;
   }
 }
+
 li.clang:after {
   animation-name: clang;
 }
 @keyframes clang {
   to {
-    width: 85%;
+    width: 70%;
   }
 }
 
-li.cplus:after {
-  animation-name: cplus;
+li.python:after {
+  animation-name: python;
 }
-@keyframes cplus {
-  to {
-    width: 85%;
-  }
-}
-li.py:after {
-  animation-name: py;
-}
-@keyframes py {
+@keyframes python {
   to {
     width: 75%;
   }
 }
+
 li.react:after {
   animation-name: react;
 }
 @keyframes react {
   to {
-    width: 80%;
+    width: 85%;
   }
 }
+
 li.node:after {
   animation-name: node;
 }
 @keyframes node {
   to {
-    width: 60%;
+    width: 85%;
   }
 }
+
 li.sql:after {
   animation-name: sql;
 }
 @keyframes sql {
   to {
+    width: 85%;
+  }
+}
+
+li.mongo:after {
+  animation-name: mongo;
+}
+@keyframes mongo {
+  to {
     width: 70%;
+  }
+}
+
+li.git:after {
+  animation-name: git;
+}
+@keyframes git {
+  to {
+    width: 80%;
   }
 }
 
