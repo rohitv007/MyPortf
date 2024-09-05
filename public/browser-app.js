@@ -1,31 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Navbar scroll hide effect code below
-  let c,
-    currentScrollTop = 0,
-    navbar = document.querySelector("nav");
+  let lastScrollTop = 0,
+    navbar = document.querySelector("nav"),
+    navbarCollapse = document.querySelector(".navbar-collapse"),
+    navbarToggler = document.querySelector(".navbar-toggler");
 
   window.addEventListener("scroll", function () {
-    let a = window.scrollY;
-    let b = navbar.offsetHeight;
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-    currentScrollTop = a;
-
-    if (c < currentScrollTop && a > b + b) {
-      navbar.classList.add("scrollUp");
-    } else if (c > currentScrollTop && !(a <= b)) {
-      navbar.classList.remove("scrollUp");
+    if (scrollTop > lastScrollTop) {
+      navbar.style.top = "-60px"; // Scroll down - hide the navbar
+    } else {
+      navbar.style.top = "0px"; // Scroll up - show the navbar
     }
-    c = currentScrollTop;
-  });
 
-  // Navbar active nav-item code below
-  document.querySelectorAll("#navbar .navbar-nav a").forEach(function (link) {
-    link.addEventListener("click", function () {
-      document
-        .querySelector("#navbar .navbar-nav li.active")
-        .classList.remove("active");
-      this.closest("li").classList.add("active");
-    });
+    lastScrollTop = scrollTop;
   });
 
   // Navbar hide on focus out
@@ -36,10 +25,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Navbar hide on document/window scroll
   document.addEventListener("scroll", function () {
-    let navbarCollapse = document.querySelector(".navbar-collapse");
     if (navbarCollapse.classList.contains("show")) {
       navbarCollapse.classList.remove("show");
+    }
+  });
+
+  navbarToggler.addEventListener("click", () => {
+    if (!navbarCollapse.classList.contains("show")) {
+      navbar.classList.add("nav-color");
+    } else {
+      navbar.classList.remove("nav-color");
+    }
+  });
+
+  document.addEventListener("scroll", function () {
+    if (window.scrollY > 0) {
+      navbar.classList.add("nav-color");
+    } else {
+      navbar.classList.remove("nav-color");
     }
   });
 
@@ -51,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Button - Go to top (Home section)
-  let btn = document.getElementById("button");
+  let btn = document.querySelector("#button");
 
   window.addEventListener("scroll", function () {
     if (window.scrollY > 700) {
