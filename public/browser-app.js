@@ -1,12 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Navbar scroll hide effect code below
   let lastScrollTop = 0,
     navbar = document.querySelector("nav"),
     navbarCollapse = document.querySelector(".navbar-collapse"),
     navbarToggler = document.querySelector(".navbar-toggler");
 
+  // Hide Navbar on page scroll
   window.addEventListener("scroll", function () {
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    console.log(window.scrollY);
 
     if (scrollTop > lastScrollTop) {
       navbar.style.top = "-60px"; // Scroll down - hide the navbar
@@ -17,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollTop = scrollTop;
   });
 
-  // Navbar hide on focus out
+  // Hide Navbar when out of focus
   document.addEventListener("click", function () {
     let navbarCollapse = document.querySelector(".navbar-collapse");
     if (navbarCollapse.classList.contains("show")) {
@@ -25,13 +27,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Navbar hide on document/window scroll
+  // Hide Navbar on scroll
   document.addEventListener("scroll", function () {
     if (navbarCollapse.classList.contains("show")) {
       navbarCollapse.classList.remove("show");
     }
   });
 
+  // Add color class to Navbar when expanded
   navbarToggler.addEventListener("click", () => {
     if (!navbarCollapse.classList.contains("show")) {
       navbar.classList.add("nav-color");
@@ -40,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Add color class to Navbar when scolled
   document.addEventListener("scroll", function () {
     if (window.scrollY > 0) {
       navbar.classList.add("nav-color");
@@ -50,35 +54,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const scrollTime = 500;
 
-  // Scroll to about section on click of span
+  // Scroll to about section on click of home-arrow button
   document.querySelector(".scrolldown").addEventListener("click", function () {
     scrollToElement("#about", scrollTime);
   });
 
-  // Button - Go to top (Home section)
+  // button - Go to Top
   let btn = document.querySelector("#button");
 
+  // function - Go to Top
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    scrollToTop(scrollTime);
+  });
+
+  // when scollY > 700, show 'scrollToTop' button
   window.addEventListener("scroll", function () {
-    if (window.scrollY > 700) {
+    if (window.scrollY > 1000) {
       btn.classList.add("show");
     } else {
       btn.classList.remove("show");
     }
   });
 
-  // Go to top function
-  btn.addEventListener("click", function (e) {
-    e.preventDefault();
-    scrollToTop(scrollTime);
-  });
-
-  // smooth scroll to sections on-click of nav-items
+  // smooth scroll to each section on click of nav-links
   let nav = document.querySelector("nav");
   let nav_height = nav.offsetHeight;
 
   nav.querySelectorAll("a").forEach(function (link) {
     link.addEventListener("click", function (e) {
       e.preventDefault();
+      this.blur();
       let id = this.getAttribute("href");
       scrollToElement(id, scrollTime, nav_height);
     });
@@ -86,31 +92,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Helper functions
   function scrollToElement(selector, duration, offset = 0) {
-    let element = document.querySelector(selector);
-    let elementPosition = element.getBoundingClientRect().top + window.scrollY;
-    let startPosition = window.scrollY;
-    let distance = elementPosition - startPosition - offset;
+    const element = document.querySelector(selector);
+    const targetPosition =
+      element.getBoundingClientRect().top + window.scrollY - offset;
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
     let startTime = null;
 
     function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      let timeElapsed = currentTime - startTime;
-      let run = ease(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    function ease(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return (c / 2) * t * t + b;
-      t--;
-      return (-c / 2) * (t * (t - 2) - 1) + b;
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : -1 + (4 - 2 * progress) * progress;
+      window.scrollTo(0, startPosition + distance * ease);
+      if (progress < 1) requestAnimationFrame(animation);
     }
 
     requestAnimationFrame(animation);
   }
 
-  function scrollToTop(duration) {
-    scrollToElement("body", duration);
+  function scrollToTop(scrollDuration) {
+    const scrollStep = -window.scrollY / (scrollDuration / 15);
+
+    const scrollInterval = setInterval(() => {
+      if (window.scrollY !== 0) {
+        window.scrollBy(0, scrollStep);
+        window.scrollBy();
+      } else {
+        clearInterval(scrollInterval);
+      }
+    }, 15);
   }
 });
